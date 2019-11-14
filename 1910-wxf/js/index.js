@@ -1,5 +1,20 @@
 $(function () {
-    $(".top").load("http://localhost/1910-wxf/land.html .topW")
+    if(getCookie("data")){
+        $(".top").load("http://localhost/1910-wxf/land.html .topW",function(){
+            // console.log(getCookie("data").split(",")[0]);
+            $(".login")[0].innerHTML = "欢迎" + getCookie("data").split(",")[0] + "用户";
+            $(".login")[0].onclick = function(){
+                location.href = "./index.html";
+            }
+            $(".login").parent().next()[0].innerHTML = "注销";
+            $(".login").parent().next()[0].onclick = function(){
+                removeCookie("data");
+                location.href = "./index.html"
+            }
+        })
+    }else{
+        $(".top").load("http://localhost/1910-wxf/land.html .topW")
+    }
     $("header").load("http://localhost/1910-wxf/land.html .header")
     $("footer").load("http://localhost/1910-wxf/land.html .footer")
     // $("nav").load("http://localhost/1910-wxf/land.html .nav")
@@ -98,10 +113,9 @@ $(function () {
                             </p>
                         </a></li>`
             }
-            this.ul.innerHTML = str;
+            this.ul.innerHTML = str;           
         }
-    }
-    
+    } 
     new shopList({
         url: "http://localhost/1910-wxf/goods.json",
         ul: document.getElementById("shopList")

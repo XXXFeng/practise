@@ -11,11 +11,6 @@ class Login{
     }
     init(){
         var that = this;
-        // this.landing.addEventListener("click",function(e){
-        //     if(e.target.id == "sub"){
-        //         console.log(2)
-        //     }
-        // })
         this.sub.onclick = function(){
             that.u = that.user.value;
             that.p = that.pass.value;
@@ -29,5 +24,5 @@ class Login{
             }
         }
     }
-}s
+}  
 new Login;

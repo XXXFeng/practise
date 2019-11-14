@@ -22,7 +22,7 @@ gulp.task("listen",()=>{
     // gulp.watch是开启监听！
     // gulp.watch("src/*.html",["text"]);
     // 监听sass文件
-    gulp.watch("scss/car.scss",["sass"]);
+    gulp.watch("scss/list.scss",["sass"]);
 })
 // 开启监听后不能写其他命令了
 gulp.task("server",()=>{
@@ -35,7 +35,7 @@ gulp.task("server",()=>{
 gulp.task("Batch",["listen","server"]);
 // sass转css的配置命令
 gulp.task("sass",()=>{
-    return gulp.src("scss/car.scss")
+    return gulp.src("scss/list.scss")
         .pipe(sass().on("error",sass.logError))
         .pipe(gulp.dest("css"))//转存
         .pipe(connect.reload());//自动刷新

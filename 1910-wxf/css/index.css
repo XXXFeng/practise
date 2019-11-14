@@ -21,8 +21,9 @@ nav ul li a:hover{color:red;}
 
 .new{margin:0 auto;background:#f5f5f5;padding: 20px 0;}
 
-.Box{background:#f5f5f5;}
+.Box{background:#f5f5f5;position: relative;}
 .Box span.time{display:inline-block;font:20px/40px "黑体";padding:10px 0;font-weight:700;border-radius:10px;margin:10px 5px;}
+.Box a.more{font:16px/40px "黑体";position: absolute;right:10px;top:20px;}
 /* .Box b{font:20px/40px "黑体";padding:10px 30px;font-weight:700;border-radius:10px;background:#000;color:#fff;margin:10px 5px;} */
 .Box ul{overflow: hidden;margin-top:10px;}
 .Box ul li{width:212px;border:1px solid #eee;float:left;background:#fff;}
