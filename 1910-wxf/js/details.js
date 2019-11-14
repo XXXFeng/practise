@@ -44,6 +44,7 @@ $(function () {
             var str;
             this.res.forEach(function (value) {
                 if (value.goodsId === that.ID) {
+                    that.value = JSON.stringify(value);
                     that.p.innerHTML = `
                         <span>1号店</span><span>&gt;</span>
                         <span>商品</span><span>&gt;</span>
@@ -63,7 +64,7 @@ $(function () {
                         </p>
                         <span class="size">选择尺码：</span><span class="size">${value.size}</span>
                         <p><i id="decrease">-</i><input type="text" value="1" min="1" id="displayGlass"><i id="add">+</i></p>
-                        <p><b>加入购物车</b></p>
+                        <p><b id="join">加入购物车</b></p>
                         <p class="bottom">保障 支持七天无理由退款</p>
                             
                         `
@@ -75,19 +76,53 @@ $(function () {
         }
         addEvent() {
             var displayGlass = document.getElementById("displayGlass");
-            // console.log(displayGlass);
+            var that = this;
             this.goods.addEventListener("click", function (e) {
                 e = window.event || event;
                 if (e.target.id === "decrease") {
                     displayGlass.value > 1 ? displayGlass.value = Number(displayGlass.value) - 1 : displayGlass.value = displayGlass.value;
                 } else if (e.target.id === "add") {
                     displayGlass.value = Number(displayGlass.value) + 1;
+                } else if(e.target.id === "join"){
+                    that.setLocalStorage();
                 }
             })
         }
+        setLocalStorage(){
+            var that = this;
+            this.msg = localStorage.getItem("msg") ? JSON.parse(localStorage.getItem("msg")) : [];
+            // 如果数组的长度为0，表示为第一次添加
+            
+            var message = this.res.find(function (value) {
+                return value.goodsId === that.ID;
+            })
+            if(this.msg.length === 0){
+                // find方法是遍历数组的方法，当碰到符合条件的直接返回回去
+                this.msg.push({
+                    id: message.goodsId,
+                    num: 1
+                })          
+            }else{
+                var onoff = true;
+                // console.log(this.ID);
+                for(var i = 0;i < this.msg.length;i++){
+                    if(this.msg[i].id === this.ID){
+                        this.msg[i].num++;
+                        onoff = false;
+                    }
+                }
+            }
+            if(onoff){
+                this.msg.push({
+                    id: message.goodsId,
+                    num: 1
+                })
+            }
+            localStorage.setItem("msg",JSON.stringify(this.msg));
+        }
     }
     new Details({
-        url: "http://localhost/1910-wxf/goods.json",
+        url: "http://localhost/1910-wxf/goods1.json",
         goods: document.getElementById("goods"),
         p: document.getElementById("p"),
         box: document.querySelector(".box"),

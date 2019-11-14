@@ -23,8 +23,8 @@ nav ul li a:hover{color:red;}
 .goods .box {overflow: hidden;}
 .goods .box .wrap{float:left;border:1px solid #ccc;position: relative;}
 .goods .box .wrap img{width:360px;height:360px;}
-.goods .box .wrap .small{width:100px;height:100px;position:absolute;left:0;top:0px;background:rgba(235, 227, 227, 0.6);z-index: 10;}
-.goods .box .big{width:360px;height:360px;position: absolute;left:400px;top:0;z-index: 5;}
+.goods .box .wrap .small{width:100px;height:100px;position:absolute;left:0;top:0px;background:rgba(235, 227, 227, 0.6);z-index: 10;display:none;}
+.goods .box .big{width:360px;height:360px;position: absolute;left:400px;top:0;z-index: 5;display:none;}
 .goods .box .right{float:right;border:1px solid #ccc;padding:20px;width:600px;height:320px;position: relative;}
 .goods .box .right p.name{font:20px/36px "";}
 .goods .box .right span{font:16px/36px "";color:#ff3c3c;}
