@@ -44,7 +44,7 @@ $(function () {
                                 <span class="price">${this.res[i].price}</span>
                                 <span class="oPrice">${this.res[i].oPrice}</span>
                             </p>
-                            <input type="button" value="加入购物车" id="input">
+                            <input type="button" value="查看详情" id="input">
                         </a></li>`
             }
             this.ul.innerHTML = str;        

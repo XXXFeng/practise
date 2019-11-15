@@ -46,8 +46,8 @@ $(function () {
                 if (value.goodsId === that.ID) {
                     that.value = JSON.stringify(value);
                     that.p.innerHTML = `
-                        <span>1号店</span><span>&gt;</span>
-                        <span>商品</span><span>&gt;</span>
+                        <span><a href="./index.html">1号店</a></span><span>&gt;</span>
+                        <span><a href="./list.html">商品</a></span><span>&gt;</span>
                         <span>${value.name}</span>  
                     `;
                     that.wrap.innerHTML += `
@@ -84,11 +84,14 @@ $(function () {
                 } else if (e.target.id === "add") {
                     displayGlass.value = Number(displayGlass.value) + 1;
                 } else if(e.target.id === "join"){
+                    that.displayGlass = document.getElementById("displayGlass");
                     that.setLocalStorage();
+
                 }
             })
         }
         setLocalStorage(){
+            // console.log(this.displayGlass.value);
             var that = this;
             this.msg = localStorage.getItem("msg") ? JSON.parse(localStorage.getItem("msg")) : [];
             // 如果数组的长度为0，表示为第一次添加
@@ -100,14 +103,14 @@ $(function () {
                 // find方法是遍历数组的方法，当碰到符合条件的直接返回回去
                 this.msg.push({
                     id: message.goodsId,
-                    num: 1
+                    num: that.displayGlass.value
                 })          
             }else{
                 var onoff = true;
                 // console.log(this.ID);
                 for(var i = 0;i < this.msg.length;i++){
                     if(this.msg[i].id === this.ID){
-                        this.msg[i].num++;
+                        this.msg[i].num = Number(this.msg[i].num) + Number(that.displayGlass.value);
                         onoff = false;
                     }
                 }
@@ -115,7 +118,7 @@ $(function () {
             if(onoff){
                 this.msg.push({
                     id: message.goodsId,
-                    num: 1
+                    num: that.displayGlass.value
                 })
             }
             localStorage.setItem("msg",JSON.stringify(this.msg));

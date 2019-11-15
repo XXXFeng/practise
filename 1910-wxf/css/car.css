@@ -17,12 +17,16 @@ nav ul li a:hover{color:red;}
 
 .car{width:100%;}
 .car h2{width:200px;margin:10px auto;font:30px/2 "";text-align:center;background: #ff3c3c;color:#fff;border-radius:20px;}
+.car p{text-align:right;}
+.car p a{font:20px/40px "";background: #ff3c3c;color:#fff;border:1px solid #000;border-radius:20px;padding:0 10px;}
 .car table{width:100%;}
 .car table thead{}
 .car table thead tr{}
-.car table thead tr th{border:2px solid #000;width:15%;font:20px/40px "黑体";background:#ff3c3c;color:#fff;}
+.car table thead tr th{border:2px solid #000;width:12%;font:20px/40px "黑体";background:#ff3c3c;color:#fff;}
 .car table thead tr th:nth-child(2){width:40%;}
 .car table tbody{}
 .car table tbody tr{}
 .car table tbody tr td{border:2px solid #000;text-align:center;font:16px/30px "";}
+.car table tbody tr td#delete{cursor: pointer;}
+.car table tbody tr td .change{text-align:center;}
 .car table tbody tr td img{width:150px;height:150px;margin:5px 5px;}
